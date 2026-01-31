@@ -22,7 +22,7 @@ func _ready() -> void:
 func _process(delta):
 	match current_state:
 		State.READY:
-			if !text_queue.empty():
+			if not text_queue.is_empty():
 				display_text()
 		State.FINISHED:
 			if Input.is_action_just_pressed("ui_accept"):
