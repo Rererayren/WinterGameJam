@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dr0amdxxxx1y7" path="res://Scenes/platform.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bkb1hund81qnc" path="res://Scenes/area_2d_coin.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://b12ku5obo67lq" path="res://Scenes/Background.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" path="res://Scenes/Background.tscn" id="6_i6g32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_qxrlw")
@@ -198,6 +198,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="Platform2" parent="." unique_id=1914813421 instance=ExtResource("3_wrm1d")]
+visible = false
 position = Vector2(336, 22)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2" unique_id=1268854348]
