@@ -25,10 +25,10 @@ offset_bottom = 128.0
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 4.6000004
-offset_left = 624.0
-offset_top = 112.0
-offset_right = 712.0
-offset_bottom = 224.0
+offset_left = 616.0
+offset_top = 72.0
+offset_right = 704.0
+offset_bottom = 184.0
 texture_normal = ExtResource("3_n45e2")
 texture_pressed = ExtResource("2_48xlc")
 texture_hover = ExtResource("2_48xlc")
@@ -39,9 +39,9 @@ anchors_preset = -1
 anchor_right = 0.6
 anchor_bottom = 1.4000001
 offset_left = 656.0
-offset_top = 264.0
+offset_top = 304.0
 offset_right = 818.0
-offset_bottom = 320.0
+offset_bottom = 360.0
 texture_normal = ExtResource("5_cp0ys")
 texture_pressed = ExtResource("5_n45e2")
 texture_hover = ExtResource("5_n45e2")
@@ -59,11 +59,11 @@ texture = ExtResource("6_opfnp")
 
 [node name="Title" type="Sprite2D" parent="." unique_id=674021316]
 z_index = 1
-position = Vector2(320, 296)
+position = Vector2(312, 192)
 texture = ExtResource("7_cp0ys")
 
 [node name="Title Background" type="Sprite2D" parent="." unique_id=474547466]
-position = Vector2(320, 312.00003)
+position = Vector2(312, 200.00003)
 scale = Vector2(1.1887954, 0.70757246)
 texture = ExtResource("9_16hvj")
 
