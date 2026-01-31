@@ -6,7 +6,9 @@
 [node name="Background" type="Node2D" unique_id=1899105601]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=933418419]
-repeat_size = Vector2(730, 510)
+repeat_size = Vector2(500, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 5
 
 [node name="BackgroundPlaceholder" type="Sprite2D" parent="Parallax2D" unique_id=1910796103]
 position = Vector2(32, 48)
@@ -14,7 +16,9 @@ scale = Vector2(0.70387703, 0.64656866)
 texture = ExtResource("1_kc7sw")
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=2143988039]
-repeat_size = Vector2(80, 80)
+repeat_size = Vector2(200, 0)
+autoscroll = Vector2(-5, 0)
+repeat_times = 14
 
 [node name="Tree3" type="Sprite2D" parent="Parallax2D2" unique_id=42155378]
 position = Vector2(-32.000004, 40)
