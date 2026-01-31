@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkb1hund81qnc" path="res://Scenes/area_2d_coin.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://b12ku5obo67lq" path="res://Scenes/Background.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="7_1l0tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("2_qxrlw")
@@ -395,4 +396,11 @@ shape = SubResource("WorldBoundaryShape2D_i6g32")
 
 [node name="Background" parent="." unique_id=1899105601 instance=ExtResource("6_i6g32")]
 z_index = -1
-position = Vector2(48, -56)
+position = Vector2(40, -56)
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=427549773]
+
+[node name="Textbox" parent="." unique_id=313584411 instance=ExtResource("7_1l0tm")]
+offset = Vector2(-50, 20)
+transform = Transform2D(1, 0, 0, 1, -50, 20)
+follow_viewport_enabled = true
