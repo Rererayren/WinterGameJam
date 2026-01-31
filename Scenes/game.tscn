@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dr0amdxxxx1y7" path="res://Scenes/platform.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bkb1hund81qnc" path="res://Scenes/area_2d_coin.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://b12ku5obo67lq" path="res://Scenes/Background.tscn" id="6_i6g32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_qxrlw")
@@ -215,3 +216,7 @@ position = Vector2(81, 189)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Killzone" unique_id=393982895]
 position = Vector2(-149, -53)
 shape = SubResource("WorldBoundaryShape2D_i6g32")
+
+[node name="Background" parent="." unique_id=1899105601 instance=ExtResource("6_i6g32")]
+z_index = -1
+position = Vector2(48, -56)
