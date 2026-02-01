@@ -23,11 +23,6 @@ buses/default_bus_layout="uid://d3r57rimrk2ll"
 
 Music="*uid://dlnn71epqxe5"
 
-[display]
-
-window/size/viewport_width=1980
-window/size/viewport_height=1080
-
 [dotnet]
 
 project/assembly_name="Game Development"

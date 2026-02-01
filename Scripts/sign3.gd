@@ -7,9 +7,7 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	textbox_container.visible = true
 	label.text = \
-	"""Keep going!
-	Please help us to collect """ + str(3 - game_manager.get_point()) + """ more Masks.
-	We are waiting for you at the end of the journey!"""
+	"""Thank you for collecting all masks for us!"""
 
 
 func _on_body_exited(body: Node2D) -> void:
