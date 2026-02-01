@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cj5lyks2pl6gs" path="res://Assets/sprites/all_spirits_talking_with_mask.png" id="3_exi56"]
 [ext_resource type="PackedScene" uid="uid://dr0amdxxxx1y7" path="res://Scenes/platform.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bkb1hund81qnc" path="res://Scenes/area_2d_coin.tscn" id="4_3dryh"]
+[ext_resource type="Texture2D" uid="uid://ba1l8o27sk4qg" path="res://Assets/sprites/small_tree_making.png" id="4_7t8sx"]
 [ext_resource type="Texture2D" uid="uid://drduurniq2m7b" path="res://Assets/sprites/top_grass.png" id="4_rku1e"]
 [ext_resource type="Texture2D" uid="uid://bm0hpbx2nrgoy" path="res://Assets/sprites/underground.png" id="5_rfjv2"]
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
@@ -209,6 +210,16 @@ texture = ExtResource("3_exi56")
 0:4/size_in_atlas = Vector2i(2, 2)
 0:4/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vm72l"]
+texture = ExtResource("4_7t8sx")
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfjv2"]
 texture = ExtResource("4_rku1e")
 0:0/0 = 0
@@ -306,6 +317,7 @@ sources/7 = SubResource("TileSetAtlasSource_7nbq1")
 sources/8 = SubResource("TileSetAtlasSource_exi56")
 sources/9 = SubResource("TileSetAtlasSource_7t8sx")
 sources/10 = SubResource("TileSetAtlasSource_mg4q0")
+sources/11 = SubResource("TileSetAtlasSource_vm72l")
 
 [sub_resource type="Animation" id="Animation_1l0tm"]
 length = 2.0

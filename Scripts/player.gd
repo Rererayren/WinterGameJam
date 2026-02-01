@@ -56,6 +56,12 @@ var is_dead: bool = false
 
 func _ready() -> void:
 	switch_state(active_state)
+	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished() -> void:
+	if animated_sprite_2d.animation == "dash":
+		print("The Dash animation has finished!")
+		just_dashed = false
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
@@ -66,6 +72,7 @@ func _physics_process(delta: float) -> void:
 func switch_state(current_state: STATE) -> void:
 	var previous_state: STATE = active_state
 	active_state = current_state
+	print(just_dashed)
 	
 	match active_state:
 		STATE.FALL:
@@ -91,6 +98,7 @@ func switch_state(current_state: STATE) -> void:
 			velocity.y = 0
 		STATE.DASH:
 			print("DASH")
+			just_dashed = true
 			can_dash = false
 			dash_timer = DASH_TIME
 			dash_cooldown_timer = DASH_COOLDOWN
@@ -99,6 +107,7 @@ func switch_state(current_state: STATE) -> void:
 		STATE.SUPER_DASH:
 			print("SUPER DASH")
 			stamina -= SUPER_DASH_COST
+			just_dashed = true
 			can_super_dash = false
 			super_dash_timer = SUPER_DASH_TIME
 			velocity.x = SUPER_DASH_SPEED * look_dir_x
