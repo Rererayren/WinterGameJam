@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var game_manager: Node = %GameManager
+
 const MAX_SPEED: float = 64.5
 const SPRINT: float = MAX_SPEED * 2.0
 const JUMP_HEIGHT: float = -165.0
@@ -13,15 +15,20 @@ const STAMINA_REGEN: float = 5.0
 var look_dir_x: int = 1
 
 var jump_count: int = 0
+var double_jump_unlocked: bool = false
+var is_dead = false
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const DASH_SPEED: float = 200.0
-const DASH_TIME: float = 0.12
+const DASH_TIME: float = 0.2
 var dash_unlocked: bool = true
 var can_dash: bool = true
 var dash_timer: float = 0.0
+var just_dashed: bool = false
 
 const SUPER_DASH_SPEED: float = 300.0
-const SUPER_DASH_TIME: float = 0.2
+const SUPER_DASH_TIME: float = 0.4
 const SUPER_DASH_COST: float = 20.0
 var stamina = MAX_STAMINA
 var super_dash_unlocked: bool = true
@@ -37,6 +44,7 @@ var suppres_dash: bool = false
 
 func _physics_process(delta: float) -> void:
 	var dir_x: float = Input.get_axis("ui_left", "ui_right")
+	
 	if dash_timer == 0.0 and super_dash_charge_timer == 0.0:
 		var velocity_weight_x: float = 1.0 - exp(-(ACCELERATION if dir_x else FRICTION) * delta)
 		velocity.x = lerp(velocity.x, dir_x * MAX_SPEED, velocity_weight_x)
@@ -57,13 +65,36 @@ func _physics_process(delta: float) -> void:
 	if super_dash_unlocked:
 		_super_dash_logic(delta)
 	
+	_play_animation(delta, dir_x, just_dashed)
+	
 	if is_on_floor():
 		if dash_timer == 0.0 and !can_dash:
 			can_dash = true
+			just_dashed = false
 		if dash_timer == 0.0 and not is_super_dashing and !can_super_dash:
 			can_super_dash = true
 	
 	move_and_slide()
+
+func _play_animation(delta: float, direction: float, just_dashed: bool) -> void:
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0:
+		animated_sprite_2d.flip_h = true
+	
+	if !is_dead:
+		if (just_dashed or is_super_dashing):
+			if animated_sprite_2d.animation != "dash":
+				animated_sprite_2d.play("dash")
+		elif is_on_floor():
+			if direction == 0:
+				animated_sprite_2d.play("idle")
+			else:
+				animated_sprite_2d.play("run")
+		else:
+			animated_sprite_2d.play("jump")
+	elif animated_sprite_2d.animation != "death":
+		animated_sprite_2d.play("death")
 
 func _sprint_logic(delta: float, direction: float) -> void:
 	if Input.is_action_pressed("sprint"):
@@ -74,12 +105,17 @@ func _double_jump_logic(delta: float) -> void:
 		jump_count = 0
 	if Input.is_action_just_pressed("jump"):
 		jump_count += 1
-		if jump_count <= MAX_JUMP_TRIES:
-			velocity.y = JUMP_HEIGHT
+		if double_jump_unlocked:
+			if jump_count <= MAX_JUMP_TRIES:
+				velocity.y = JUMP_HEIGHT
+		else:
+			if jump_count <= 1:
+				velocity.y = JUMP_HEIGHT
 	
 func _dash_logic(delta: float) -> void:
 	if can_dash and Input.is_action_just_pressed("dash") and not suppres_dash:
 		can_dash = false
+		just_dashed = true
 		dash_timer = DASH_TIME
 		velocity.x = DASH_SPEED * look_dir_x
 		velocity.y = 0
@@ -92,7 +128,6 @@ func _dash_logic(delta: float) -> void:
 func _super_dash_logic(delta: float) -> void:
 	if stamina < SUPER_DASH_COST:
 		super_dash_charge_cost = 0.0
-		return
 	
 	if can_super_dash and stamina >= SUPER_DASH_COST and is_on_floor() and not is_super_dashing:
 		if Input.is_action_pressed("super_dash") and suppres_dash:
@@ -134,3 +169,9 @@ func _regen_stamina(delta: float) -> void:
 		stamina += STAMINA_REGEN * delta
 		stamina = min(stamina, MAX_STAMINA)
 		print(stamina)
+
+func set_double_jump():
+	double_jump_unlocked = true
+
+func set_is_dead():
+	is_dead = true
