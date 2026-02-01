@@ -10,6 +10,9 @@ enum STATE {
 	SUPER_DASH,
 }
 
+@onready var game_manager: Node = %GameManager
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 const MAX_SPEED: float = 64.5
 const SPRINT: float = MAX_SPEED * 2.0
 const JUMP_HEIGHT: float = -165.0
@@ -29,7 +32,7 @@ const DASH_SPEED: float = 200.0
 const DASH_TIME: float = 0.12
 
 const SUPER_DASH_SPEED: float = 300.0
-const SUPER_DASH_TIME: float = 0.2
+const SUPER_DASH_TIME: float = 0.4
 const SUPER_DASH_COST: float = 20.0
 
 var active_state: STATE = STATE.FALL
@@ -43,6 +46,7 @@ var dash_unlocked: bool = true
 var can_dash: bool = true
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
+var just_dashed: bool = false
 
 var super_dash_unlocked: bool = true
 var can_super_dash: bool = true
@@ -53,6 +57,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
+	_play_animation(delta, dir_x, just_dashed)
 	_update_timers(delta)
 	move_and_slide()
 
@@ -162,6 +167,26 @@ func process_state(delta: float) -> void:
 				super_dash_timer = 0.0
 				switch_state(STATE.FALL if not is_on_floor() else STATE.FLOOR)
 
+func _play_animation(delta: float, direction: float, just_dashed: bool) -> void:
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0:
+		animated_sprite_2d.flip_h = true
+	
+	if !is_dead:
+		if (just_dashed or is_super_dashing):
+			if animated_sprite_2d.animation != "dash":
+				animated_sprite_2d.play("dash")
+		elif is_on_floor():
+			if direction == 0:
+				animated_sprite_2d.play("idle")
+			else:
+				animated_sprite_2d.play("run")
+		else:
+			animated_sprite_2d.play("jump")
+	elif animated_sprite_2d.animation != "death":
+		animated_sprite_2d.play("death")
+
 func _movement_logic(delta: float) -> void:
 	var dir_x: float = Input.get_axis("ui_left", "ui_right")
 	
@@ -215,3 +240,11 @@ func _regen_stamina(delta: float) -> void:
 		stamina += STAMINA_REGEN * delta
 		stamina = min(stamina, MAX_STAMINA)
 		print(stamina)
+
+
+
+func set_double_jump():
+	double_jump_unlocked = true
+
+func set_is_dead():
+	is_dead = true

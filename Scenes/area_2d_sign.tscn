@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b58irlefmkovn"]
+
+[ext_resource type="Texture2D" uid="uid://craonie043xna" path="res://Assets/sprites/world_tileset.png" id="1_ervus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi1mo"]
+atlas = ExtResource("1_ervus")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqxye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi1mo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aol3p"]
+size = Vector2(14, 14)
+
+[node name="Area2D Sign" type="Area2D" unique_id=1473179152]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=971537753]
+sprite_frames = SubResource("SpriteFrames_vqxye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=535807192]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_aol3p")

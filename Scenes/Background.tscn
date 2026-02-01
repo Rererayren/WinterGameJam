@@ -11,8 +11,12 @@ autoscroll = Vector2(-10, 0)
 repeat_times = 5
 
 [node name="BackgroundPlaceholder" type="Sprite2D" parent="Parallax2D" unique_id=1910796103]
+visible = false
 position = Vector2(32, 48)
 scale = Vector2(0.70387703, 0.64656866)
+texture = ExtResource("1_kc7sw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=704361890]
 texture = ExtResource("1_kc7sw")
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=2143988039]

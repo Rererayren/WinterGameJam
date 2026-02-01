@@ -1,11 +1,14 @@
 [gd_scene format=4 uid="uid://4jv84ei4tb18"]
 
 [ext_resource type="PackedScene" uid="uid://mjmy1fbw3ugd" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://c5eph62yq2jxe" path="res://Scripts/game_manager.gd" id="1_i6g32"]
 [ext_resource type="Texture2D" uid="uid://craonie043xna" path="res://Assets/sprites/world_tileset.png" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://dr0amdxxxx1y7" path="res://Scenes/platform.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bkb1hund81qnc" path="res://Scenes/area_2d_coin.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
-[ext_resource type="PackedScene" path="res://Scenes/Background.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://b12ku5obo67lq" path="res://Scenes/Background.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://b58irlefmkovn" path="res://Scenes/area_2d_sign.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="7_1l0tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_qxrlw")
@@ -142,7 +145,10 @@ texture = ExtResource("2_qxrlw")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_wowpa")
 
-[sub_resource type="Animation" id="Animation_wrm1d"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i6g32"]
+distance = -37.0
+
+[sub_resource type="Animation" id="Animation_1l0tm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -154,13 +160,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(336, 22)]
+"values": [Vector2(544, -6)]
 }
 
-[sub_resource type="Animation" id="Animation_3dryh"]
+[sub_resource type="Animation" id="Animation_v158k"]
 resource_name = "move"
 length = 2.0
-loop_mode = 1
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -168,34 +174,39 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6333333, 1.6333333),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(400, 22), Vector2(336, 22)]
+"values": [Vector2(544, -6), Vector2(650, -6)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wowpa"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4fw4"]
 _data = {
-&"RESET": SubResource("Animation_wrm1d"),
-&"move": SubResource("Animation_3dryh")
+&"RESET": SubResource("Animation_1l0tm"),
+&"move": SubResource("Animation_v158k")
 }
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i6g32"]
-distance = -37.0
 
 [node name="Game" type="Node2D" unique_id=1620763576]
+position = Vector2(336, 22)
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=835179314]
-tile_map_data = PackedByteArray("AAD2/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
+[node name="GameManager" type="Node" parent="." unique_id=434492394]
+unique_name_in_owner = true
+script = ExtResource("1_i6g32")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=835179314]
+tile_map_data = PackedByteArray("AAD+/wQAAAAAAAEAAAD9/wQAAAAAAAEAAAD9/wUAAAAAAAEAAAD9/wYAAAAAAAEAAAD9/wcAAAAAAAEAAAD9/wgAAAABAAAAAAD9/wkAAAABAAAAAAAEAAQAAAAAAAEAAAADAAQAAAAAAAEAAAACAAQAAAAAAAEAAAABAAQAAAAAAAEAAAAAAAQAAAAAAAEAAAD//wQAAAAAAAEAAAD//wUAAAABAAAAAAD+/wUAAAAAAAEAAAAAAAUAAAAAAAEAAAABAAUAAAAAAAEAAAACAAUAAAAAAAEAAAADAAUAAAAAAAEAAAAEAAUAAAAAAAEAAAAEAAYAAAAAAAEAAAADAAYAAAABAAAAAAACAAYAAAAAAAEAAAABAAYAAAAAAAEAAAAAAAYAAAAAAAEAAAD//wYAAAAAAAEAAAD//wcAAAABAAEAAAD+/wcAAAAAAAEAAAAAAAcAAAAAAAEAAAABAAcAAAAAAAEAAAACAAcAAAAAAAEAAAADAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAADAAgAAAAAAAEAAAACAAgAAAAAAAEAAAABAAgAAAAAAAEAAAAAAAgAAAAAAAEAAAD//wgAAAAAAAEAAAD//wkAAAAAAAEAAAD+/wkAAAAAAAEAAAD+/wgAAAAAAAEAAAD+/wYAAAAAAAEAAAABAAkAAAAAAAEAAAAAAAkAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAABAAEAAAAEAAkAAAAAAAEAAAAEAAgAAAAAAAEAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAEAAAAHAAYAAAAAAAEAAAAGAAYAAAAAAAEAAAAFAAYAAAAAAAEAAAAFAAcAAAAAAAEAAAAGAAcAAAAAAAEAAAAHAAcAAAAAAAEAAAAGAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAIAAgAAAAAAAEAAAAIAAcAAAABAAAAAAAJAAYAAAAAAAEAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAEAAAAFAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAD+////AAACAAQAAAD+/wAAAAACAAUAAAD+/wEAAAACAAYAAAD/////AAADAAQAAAD//wAAAAADAAUAAAD//wEAAAADAAYAAAD//wIAAAADAAcAAAAAAP//AAAEAAQAAAAAAAAAAAAEAAUAAAAAAAEAAAAEAAYAAAAJAAUAAAAAAAAAAAAVAP7/AAAAAAAAAAAWAP7/AAAAAAAAAAAXAP7/AAAAAAAAAAAYAP7/AAAAAAAAAAAZAP7/AAAAAAAAAAAVAP//AAAAAAEAAAAWAP//AAAAAAEAAAAXAP//AAAAAAEAAAAYAP//AAAAAAEAAAAZAP//AAAAAAEAAAAZAAAAAAAAAAEAAAAYAAAAAAAAAAEAAAAXAAAAAAAAAAEAAAAWAAAAAAABAAAAAAAVAAAAAAAAAAEAAAAVAAEAAAAAAAEAAAAWAAEAAAAAAAEAAAAXAAEAAAAAAAEAAAAYAAEAAAAAAAEAAAAZAAEAAAAAAAEAAAAZAAIAAAAAAAEAAAAYAAIAAAABAAAAAAAXAAIAAAAAAAEAAAAWAAIAAAAAAAEAAAAVAAIAAAABAAEAAAAWAAMAAAAAAAEAAAAXAAMAAAAAAAEAAAAYAAMAAAABAAAAAAAZAAMAAAAAAAEAAAAZAAQAAAAAAAEAAAAYAAQAAAAAAAEAAAAXAAQAAAAAAAEAAAAWAAQAAAAAAAEAAAAVAAMAAAAAAAEAAAAVAAQAAAAAAAEAAAAZAAUAAAAAAAEAAAAZAAYAAAAAAAEAAAAYAAYAAAAAAAEAAAAXAAYAAAAAAAEAAAAWAAYAAAAAAAEAAAAWAAUAAAAAAAEAAAAXAAUAAAAAAAEAAAAYAAUAAAAAAAEAAAAWAAcAAAAAAAEAAAAVAAcAAAAAAAEAAAAVAAYAAAABAAEAAAAVAAUAAAAAAAEAAAAVAAgAAAAAAAEAAAAWAAgAAAAAAAEAAAAWAAkAAAAAAAEAAAAXAAkAAAAAAAEAAAAXAAgAAAABAAAAAAAYAAgAAAAAAAEAAAAYAAcAAAAAAAEAAAAZAAcAAAABAAEAAAAZAAgAAAAAAAEAAAAYAAkAAAAAAAEAAAAZAAkAAAAAAAEAAAAXAAcAAAAAAAEAAAAVAAkAAAAAAAEAAAAIAAQAAAABAAMAAAAXAPz/AAAAAAMAAAAXAP3/AAAAAAUAAAAHAAQAAAABAAYAAAAaAP7/AAAAAAAAAAAbAP7/AAAAAAAAAAAaAP//AAABAAEAAAAbAP//AAAAAAEAAAAbAAAAAAAAAAEAAAAbAAEAAAABAAEAAAAbAAIAAAAAAAEAAAAbAAMAAAAAAAEAAAAbAAQAAAAAAAEAAAAbAAUAAAAAAAEAAAAbAAYAAAAAAAEAAAAbAAcAAAAAAAEAAAAbAAgAAAAAAAEAAAAaAAgAAAAAAAEAAAAaAAcAAAAAAAEAAAAaAAYAAAAAAAEAAAAaAAUAAAAAAAEAAAAaAAQAAAAAAAEAAAAaAAMAAAAAAAEAAAAaAAIAAAAAAAEAAAAaAAEAAAAAAAEAAAAaAAAAAAAAAAEAAAAaAAkAAAAAAAEAAAAbAAkAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_wowpa")
 
 [node name="Player" parent="." unique_id=823965022 instance=ExtResource("1_ebmjs")]
+position = Vector2(0, -47)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=151851536]
+visible = false
 zoom = Vector2(4, 4)
-limit_bottom = 105
+limit_bottom = 400
 limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player" unique_id=1137471416]
 unique_name_in_owner = true
@@ -208,24 +219,39 @@ one_shot = true
 [node name="Platform2" parent="." unique_id=1914813421 instance=ExtResource("3_wrm1d")]
 visible = false
 position = Vector2(336, 22)
+[node name="Coins" type="Node" parent="." unique_id=303560710]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2" unique_id=1268854348]
-libraries/ = SubResource("AnimationLibrary_wowpa")
-autoplay = &"move"
-
-[node name="Area2D Coin" parent="." unique_id=1538656560 instance=ExtResource("4_3dryh")]
-position = Vector2(296, 7)
-
-[node name="Area2D Coin2" parent="." unique_id=1243159507 instance=ExtResource("4_3dryh")]
-position = Vector2(58, 25)
+[node name="Area2D Coin" parent="Coins" unique_id=1538656560 instance=ExtResource("4_3dryh")]
+position = Vector2(512, 77)
 
 [node name="Area2D Killzone" parent="." unique_id=647948754 instance=ExtResource("5_wowpa")]
-position = Vector2(81, 189)
+position = Vector2(-101, 123)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Killzone" unique_id=393982895]
-position = Vector2(-149, -53)
+position = Vector2(0, -3)
 shape = SubResource("WorldBoundaryShape2D_i6g32")
 
 [node name="Background" parent="." unique_id=1899105601 instance=ExtResource("6_i6g32")]
 z_index = -1
-position = Vector2(48, -56)
+position = Vector2(814, -56)
+
+[node name="Platforms" type="Node" parent="." unique_id=1393332680]
+
+[node name="Platform" parent="Platforms" unique_id=1133985832 instance=ExtResource("3_wrm1d")]
+position = Vector2(452, 26)
+
+[node name="Platform2" parent="Platforms" unique_id=364533288 instance=ExtResource("3_wrm1d")]
+position = Vector2(527, 60)
+
+[node name="Platform3" parent="Platforms" unique_id=268217509 instance=ExtResource("3_wrm1d")]
+position = Vector2(544, -6)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform3" unique_id=1386750718]
+libraries/ = SubResource("AnimationLibrary_h4fw4")
+autoplay = &"move"
+
+[node name="Area2D Sign" parent="." unique_id=1473179152 instance=ExtResource("8_v158k")]
+position = Vector2(40, 40)
+
+[node name="Area2D Sign2" parent="." unique_id=1053961668 instance=ExtResource("8_v158k")]
+position = Vector2(412, -39)
