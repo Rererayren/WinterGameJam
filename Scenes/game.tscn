@@ -1,15 +1,14 @@
 [gd_scene format=4 uid="uid://4jv84ei4tb18"]
 
 [ext_resource type="PackedScene" uid="uid://mjmy1fbw3ugd" path="res://Scenes/player.tscn" id="1_ebmjs"]
-[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_i6g32"]
+[ext_resource type="Script" uid="uid://c5eph62yq2jxe" path="res://Scripts/game_manager.gd" id="1_i6g32"]
 [ext_resource type="Texture2D" uid="uid://craonie043xna" path="res://Assets/sprites/world_tileset.png" id="2_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://c7gth6sn04deo" path="res://Assets/sprites/forest_grass.png" id="3_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dr0amdxxxx1y7" path="res://Scenes/platform.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bkb1hund81qnc" path="res://Scenes/area_2d_coin.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
-[ext_resource type="PackedScene" path="res://Scenes/Background.tscn" id="6_i6g32"]
-[ext_resource type="PackedScene" path="res://Scenes/area_2d_sign.tscn" id="8_v158k"]
-[ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://b12ku5obo67lq" path="res://Scenes/Background.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://b58irlefmkovn" path="res://Scenes/area_2d_sign.tscn" id="8_v158k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_qxrlw")
@@ -145,7 +144,6 @@ texture = ExtResource("2_qxrlw")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldgsr"]
 texture = ExtResource("3_h4fw4")
 texture_region_size = Vector2i(8, 8)
-0:0/size_in_atlas = Vector2i(2, 2)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
