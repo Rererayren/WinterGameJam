@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://d3wq5yapkmt68" path="res://Scripts/sign2.gd" id="9_ldgsr"]
 [ext_resource type="Script" uid="uid://7xbw7m36bx4x" path="res://Scripts/sign3.gd" id="10_rku1e"]
 [ext_resource type="Script" uid="uid://bxpk4300pfn16" path="res://Scripts/sign4.gd" id="11_rfjv2"]
-[ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="17_ewbju"]
+[ext_resource type="Script" uid="uid://b2cnapmutdswe" path="res://Scripts/collision_Sun.gd" id="21_7t8sx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ldgsr"]
 load_path = "res://.godot/imported/world_tileset.png-7d0351459d02dec97d7c98fe9a06c85b.ctex"
@@ -426,6 +426,9 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i6g32"]
 distance = -37.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exi56"]
+size = Vector2(20, 32.5)
+
 [node name="Game" type="Node2D" unique_id=1620763576]
 
 [node name="GameManager" type="Node" parent="." unique_id=434492394]
@@ -578,25 +581,22 @@ shape = SubResource("WorldBoundaryShape2D_i6g32")
 
 [node name="Background" parent="." unique_id=1899105601 instance=ExtResource("6_i6g32")]
 z_index = -1
-position = Vector2(814, -56)
-
-[node name="Textbox" parent="." unique_id=313584411 instance=ExtResource("17_ewbju")]
-visible = false
+position = Vector2(1185, -122)
 
 [node name="Spirits" type="Node" parent="." unique_id=275827564]
 
-[node name="Wistful" parent="Spirits" unique_id=599676834 instance=ExtResource("17_ewbju")]
+[node name="Bliss" type="Node2D" parent="Spirits" unique_id=227895491]
 
-[node name="Meloncholy" parent="Spirits" unique_id=1732595978 instance=ExtResource("17_ewbju")]
-visible = false
+[node name="Area2D" type="Area2D" parent="Spirits/Bliss" unique_id=905134552]
 
-[node name="Area2D Sign" parent="Spirits" unique_id=56840506 instance=ExtResource("8_v158k")]
-position = Vector2(-27, 41)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spirits/Bliss/Area2D" unique_id=1508902604]
+position = Vector2(1720, 118.75)
+shape = SubResource("RectangleShape2D_exi56")
+script = ExtResource("21_7t8sx")
 
-[node name="Bliss" parent="Spirits/Area2D Sign" unique_id=1641100824 instance=ExtResource("17_ewbju")]
-
-[node name="TextboxContainer" parent="Spirits/Area2D Sign" unique_id=1490835201 instance=ExtResource("9_h4fw4")]
-offset_left = -105.0
-offset_top = -86.0
-offset_right = 106.0
-offset_bottom = -3.0
+[node name="TextEdit" type="TextEdit" parent="Spirits/Bliss" unique_id=1133617345]
+offset_left = 1720.0
+offset_top = 118.75
+offset_right = 1728.0
+offset_bottom = 126.75
+script = ExtResource("21_7t8sx")
