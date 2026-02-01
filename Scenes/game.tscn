@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c5eph62yq2jxe" path="res://Scripts/game_manager.gd" id="1_i6g32"]
 [ext_resource type="Texture2D" uid="uid://cj5lyks2pl6gs" path="res://Assets/sprites/all_spirits_talking_with_mask.png" id="3_exi56"]
 [ext_resource type="PackedScene" uid="uid://dr0amdxxxx1y7" path="res://Scenes/platform.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://bkb1hund81qnc" path="res://Scenes/area_2d_coin.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" path="res://Scenes/mask.tscn" id="4_3dryh"]
 [ext_resource type="Texture2D" uid="uid://drduurniq2m7b" path="res://Assets/sprites/top_grass.png" id="4_rku1e"]
 [ext_resource type="Texture2D" uid="uid://bm0hpbx2nrgoy" path="res://Assets/sprites/underground.png" id="5_rfjv2"]
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
@@ -17,10 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://b58irlefmkovn" path="res://Scenes/area_2d_sign.tscn" id="8_v158k"]
 [ext_resource type="Texture2D" uid="uid://daur2020r2sro" path="res://Assets/sprites/stone_shrine_thingy.png" id="9_7nbq1"]
 [ext_resource type="PackedScene" uid="uid://derb7pqif16fg" path="res://Scenes/Sign.tscn" id="9_h4fw4"]
-[ext_resource type="Script" uid="uid://d3wq5yapkmt68" path="res://Scripts/sign2.gd" id="9_ldgsr"]
-[ext_resource type="Script" uid="uid://7xbw7m36bx4x" path="res://Scripts/sign3.gd" id="10_rku1e"]
-[ext_resource type="Script" uid="uid://bxpk4300pfn16" path="res://Scripts/sign4.gd" id="11_rfjv2"]
-[ext_resource type="Script" uid="uid://b2cnapmutdswe" path="res://Scripts/collision_Sun.gd" id="21_7t8sx"]
+[ext_resource type="Script" path="res://Scripts/sign2.gd" id="9_ldgsr"]
+[ext_resource type="Script" path="res://Scripts/sign3.gd" id="10_rku1e"]
+[ext_resource type="Script" path="res://Scripts/sign4.gd" id="11_rfjv2"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ldgsr"]
 load_path = "res://.godot/imported/world_tileset.png-7d0351459d02dec97d7c98fe9a06c85b.ctex"
@@ -470,12 +469,13 @@ position = Vector2(474, -309)
 [node name="Ability Textboxes" type="Node" parent="." unique_id=208963742]
 
 [node name="TextboxContainer" parent="Ability Textboxes" unique_id=1788153566 instance=ExtResource("9_h4fw4")]
-offset_left = 172.0
+offset_left = 173.0
 offset_top = 67.0
-offset_right = -1653.0
-offset_bottom = 122.0
+offset_right = -1613.0
+offset_bottom = 113.0
 
-[node name="DisplayTextboxTimer" type="Timer" parent="Ability Textboxes/TextboxContainer" unique_id=2006470727]
+[node name="DoubleJumpTextboxTimer" type="Timer" parent="Ability Textboxes/TextboxContainer" unique_id=1258649798]
+wait_time = 0.1
 one_shot = true
 
 [node name="TextboxContainer2" parent="Ability Textboxes" unique_id=1363042312 instance=ExtResource("9_h4fw4")]
@@ -484,11 +484,15 @@ offset_top = -150.0
 offset_right = -712.0
 offset_bottom = -110.0
 
+[node name="SuperDashTextboxTimer" type="Timer" parent="Ability Textboxes/TextboxContainer2" unique_id=1359383252]
+
 [node name="TextboxContainer3" parent="Ability Textboxes" unique_id=1898608500 instance=ExtResource("9_h4fw4")]
 offset_left = 516.0
 offset_top = -285.0
 offset_right = -1308.0
 offset_bottom = -245.0
+
+[node name="FloatTextboxTimer" type="Timer" parent="Ability Textboxes/TextboxContainer3" unique_id=113588778]
 
 [node name="Signs" type="Node" parent="." unique_id=1801460739]
 
@@ -508,7 +512,7 @@ script = ExtResource("9_ldgsr")
 [node name="TextboxContainer" parent="Signs/Area2D Sign2" unique_id=1923757727 instance=ExtResource("9_h4fw4")]
 offset_left = -126.0
 offset_top = -52.0
-offset_right = 127.0
+offset_right = 137.0
 offset_bottom = -15.0
 
 [node name="Area2D Sign3" parent="Signs" unique_id=195187266 instance=ExtResource("8_v158k")]
@@ -590,11 +594,9 @@ position = Vector2(1185, -122)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spirits/Bliss/Area2D" unique_id=1508902604]
 position = Vector2(1720, 118.75)
 shape = SubResource("RectangleShape2D_exi56")
-script = ExtResource("21_7t8sx")
 
 [node name="TextEdit" type="TextEdit" parent="Spirits/Bliss" unique_id=1133617345]
 offset_left = 1720.0
 offset_top = 118.75
 offset_right = 1728.0
 offset_bottom = 126.75
-script = ExtResource("21_7t8sx")
