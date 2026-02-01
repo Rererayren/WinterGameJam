@@ -52,12 +52,14 @@ var super_dash_unlocked: bool = true
 var can_super_dash: bool = true
 var super_dash_timer: float = 0.2
 
+var double_jump_unlocked: bool = false
+var is_dead: bool = false
+
 func _ready() -> void:
 	switch_state(active_state)
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
-	_play_animation(delta, dir_x, just_dashed)
 	_update_timers(delta)
 	move_and_slide()
 
@@ -167,28 +169,9 @@ func process_state(delta: float) -> void:
 				super_dash_timer = 0.0
 				switch_state(STATE.FALL if not is_on_floor() else STATE.FLOOR)
 
-func _play_animation(delta: float, direction: float, just_dashed: bool) -> void:
-	if direction > 0:
-		animated_sprite_2d.flip_h = false
-	elif direction < 0:
-		animated_sprite_2d.flip_h = true
-	
-	if !is_dead:
-		if (just_dashed or is_super_dashing):
-			if animated_sprite_2d.animation != "dash":
-				animated_sprite_2d.play("dash")
-		elif is_on_floor():
-			if direction == 0:
-				animated_sprite_2d.play("idle")
-			else:
-				animated_sprite_2d.play("run")
-		else:
-			animated_sprite_2d.play("jump")
-	elif animated_sprite_2d.animation != "death":
-		animated_sprite_2d.play("death")
-
 func _movement_logic(delta: float) -> void:
 	var dir_x: float = Input.get_axis("ui_left", "ui_right")
+	_play_animation(delta, dir_x, just_dashed)
 	
 	if dir_x:
 		look_dir_x = int(dir_x)
@@ -200,6 +183,26 @@ func _movement_logic(delta: float) -> void:
 	var weight: float = ACCELERATION if dir_x else FRICTION
 	var velocity_weight_x: float = 1.0 - exp(-weight * delta)
 	velocity.x = lerp(velocity.x, dir_x * target_speed, velocity_weight_x)
+
+func _play_animation(delta: float, direction: float, just_dashed: bool) -> void:
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0:
+		animated_sprite_2d.flip_h = true
+	
+	if !is_dead:
+		if (just_dashed):
+			if animated_sprite_2d.animation != "dash":
+				animated_sprite_2d.play("dash")
+		elif is_on_floor():
+			if direction == 0:
+				animated_sprite_2d.play("idle")
+			else:
+				animated_sprite_2d.play("run")
+		else:
+			animated_sprite_2d.play("jump")
+	elif animated_sprite_2d.animation != "death":
+		animated_sprite_2d.play("death")
 
 func try_dash() -> bool:
 	if not dash_unlocked:
@@ -239,9 +242,7 @@ func _regen_stamina(delta: float) -> void:
 	if stamina < MAX_STAMINA:
 		stamina += STAMINA_REGEN * delta
 		stamina = min(stamina, MAX_STAMINA)
-		print(stamina)
-
-
+		#print(stamina)
 
 func set_double_jump():
 	double_jump_unlocked = true

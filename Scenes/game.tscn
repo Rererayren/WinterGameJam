@@ -1,13 +1,13 @@
 [gd_scene format=4 uid="uid://4jv84ei4tb18"]
 
 [ext_resource type="PackedScene" uid="uid://mjmy1fbw3ugd" path="res://Scenes/player.tscn" id="1_ebmjs"]
-[ext_resource type="Script" uid="uid://c5eph62yq2jxe" path="res://Scripts/game_manager.gd" id="1_i6g32"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_i6g32"]
 [ext_resource type="Texture2D" uid="uid://craonie043xna" path="res://Assets/sprites/world_tileset.png" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://dr0amdxxxx1y7" path="res://Scenes/platform.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bkb1hund81qnc" path="res://Scenes/area_2d_coin.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://b12ku5obo67lq" path="res://Scenes/Background.tscn" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://b58irlefmkovn" path="res://Scenes/area_2d_sign.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" path="res://Scenes/Background.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" path="res://Scenes/area_2d_sign.tscn" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="7_1l0tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
@@ -208,9 +208,6 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player" unique_id=1137471416]
-unique_name_in_owner = true
-
 [node name="FloatCooldown" type="Timer" parent="Player" unique_id=2648087]
 process_callback = 0
 wait_time = 0.1
@@ -219,6 +216,7 @@ one_shot = true
 [node name="Platform2" parent="." unique_id=1914813421 instance=ExtResource("3_wrm1d")]
 visible = false
 position = Vector2(336, 22)
+
 [node name="Coins" type="Node" parent="." unique_id=303560710]
 
 [node name="Area2D Coin" parent="Coins" unique_id=1538656560 instance=ExtResource("4_3dryh")]
