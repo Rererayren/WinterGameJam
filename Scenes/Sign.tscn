@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://derb7pqif16fg"]
+
+[ext_resource type="FontFile" uid="uid://bkeb8t5pisgy8" path="res://Assets/fonts/TinyUnicode.ttf" id="1_7l4ce"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndjoj"]
+bg_color = Color(0, 0, 0, 0.3647059)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.11482305, 0.043300778, 0.007697542, 1)
+border_blend = true
+
+[node name="TextboxContainer" type="MarginContainer" unique_id=1788153566]
+visible = false
+visibility_layer = 4
+z_index = 2
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -984.0
+offset_bottom = 37.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Panel" type="Panel" parent="." unique_id=1111402341]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ndjoj")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=426920798]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=390833413]
+layout_mode = 2
+
+[node name="Start" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1279132299]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_7l4ce")
+theme_override_font_sizes/font_size = 16
+text = "*"
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=790854740]
+custom_minimum_size = Vector2(7, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_7l4ce")
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 3
+autowrap_mode = 1
+
+[node name="End" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1755330868]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_7l4ce")
+theme_override_font_sizes/font_size = 16
+text = "v"
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1862887644]
+layout_mode = 2
