@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://dgsxu41dwk7p6"]
 
 [ext_resource type="Script" uid="uid://cp2hoo46ayssu" path="res://Scripts/main_menu.gd" id="1_28flt"]
-[ext_resource type="Texture2D" uid="uid://bamv7wg3cjvd3" path="res://Assets/sprites/Start.png" id="2_48xlc"]
-[ext_resource type="Texture2D" uid="uid://byls7nbvbwesf" path="res://Assets/sprites/StartHover.png" id="3_n45e2"]
-[ext_resource type="Texture2D" uid="uid://ch7d2y505c1gi" path="res://Assets/sprites/EndHover.png" id="5_cp0ys"]
-[ext_resource type="Texture2D" uid="uid://di3rwrdumv2u4" path="res://Assets/sprites/End_2.png" id="5_n45e2"]
-[ext_resource type="Texture2D" uid="uid://d2mfaw6ebox8k" path="res://Assets/sprites/Title.png" id="7_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://160xrc6mdi4h" path="res://Assets/sprites/TextBoxBackground.png" id="7_trj04"]
+[ext_resource type="FontFile" uid="uid://cs170gw4sjok2" path="res://Assets/fonts/ka1.ttf" id="9_16hvj"]
+[ext_resource type="PackedScene" uid="uid://mjmy1fbw3ugd" path="res://Scenes/player.tscn" id="10_16hvj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ehe0"]
 
 [node name="MainMenu" type="Node2D" unique_id=276062027]
 script = ExtResource("1_28flt")
@@ -14,56 +13,85 @@ script = ExtResource("1_28flt")
 [node name="Button_manager" type="Control" parent="." unique_id=1179907041]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 429.9166
-offset_top = 239.88683
-offset_right = 469.9166
-offset_bottom = 279.88684
+offset_left = 113.422455
+offset_top = 53.29332
+offset_right = 153.42245
+offset_bottom = 93.293335
 scale = Vector2(1.1415011, 1.1415011)
 
-[node name="Start" type="TextureButton" parent="Button_manager" unique_id=776415694]
+[node name="Start" type="Button" parent="Button_manager" unique_id=1979532517]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 4.6000004
-offset_left = 616.0
-offset_top = 72.0
-offset_right = 704.0
-offset_bottom = 184.0
-texture_normal = ExtResource("3_n45e2")
-texture_pressed = ExtResource("2_48xlc")
-texture_hover = ExtResource("2_48xlc")
+offset_left = 608.4774
+offset_top = 135.52916
+offset_right = 696.4774
+offset_bottom = 247.52914
 
-[node name="Quit" type="TextureButton" parent="Button_manager" unique_id=584099800]
+[node name="Quit" type="Button" parent="Button_manager" unique_id=725464154]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.6
 anchor_bottom = 1.4000001
-offset_left = 656.0
-offset_top = 304.0
-offset_right = 818.0
-offset_bottom = 360.0
-texture_normal = ExtResource("5_cp0ys")
-texture_pressed = ExtResource("5_n45e2")
-texture_hover = ExtResource("5_n45e2")
-
-[node name="MenuButtonBackground" type="Sprite2D" parent="Button_manager" unique_id=1521799493]
-z_index = -1
-position = Vector2(744, 232)
+offset_left = 608.47736
+offset_top = 324.7537
+offset_right = 856.47736
+offset_bottom = 380.75366
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1151974901]
 z_index = -2
-position = Vector2(1024, 536)
-scale = Vector2(4.307506, 2.6054065)
+position = Vector2(432.00006, 536.00006)
+scale = Vector2(4.6155405, 2.7917218)
 texture = ExtResource("7_trj04")
 
-[node name="Title" type="Sprite2D" parent="." unique_id=674021316]
-z_index = 1
-position = Vector2(621.9166, 343.88684)
-scale = Vector2(1.1415011, 1.1415011)
-texture = ExtResource("7_cp0ys")
+[node name="Title" type="Label" parent="." unique_id=1006118738]
+offset_left = 72.0
+offset_top = 144.0
+offset_right = 690.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("9_16hvj")
+theme_override_font_sizes/font_size = 79
+text = "eLSEwHERE"
 
-[node name="Title Background" type="Sprite2D" parent="." unique_id=474547466]
-position = Vector2(621.91656, 351.88684)
-scale = Vector2(1.3570112, 0.8076946)
+[node name="Label" type="Label" parent="Title" unique_id=493302027]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 618.0
+offset_bottom = 153.0
+theme_override_fonts/font = ExtResource("9_16hvj")
+theme_override_font_sizes/font_size = 79
+text = "----------------"
+
+[node name="Label3" type="Label" parent="." unique_id=1471311973]
+offset_left = 824.0
+offset_top = 232.0
+offset_right = 1442.0
+offset_bottom = 321.0
+theme_override_fonts/font = ExtResource("9_16hvj")
+theme_override_font_sizes/font_size = 64
+text = "sTART"
+
+[node name="Label2" type="Label" parent="." unique_id=937725451]
+offset_left = 864.0
+offset_top = 456.0
+offset_right = 1482.0
+offset_bottom = 545.0
+scale = Vector2(0.93246245, 0.9069584)
+theme_override_fonts/font = ExtResource("9_16hvj")
+theme_override_font_sizes/font_size = 64
+text = "qUIT"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1231612645]
+position = Vector2(560.00006, 552.00006)
+scale = Vector2(4.6155405, 2.7917218)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1506449259]
+position = Vector2(-50.264965, 0)
+shape = SubResource("WorldBoundaryShape2D_1ehe0")
+
+[node name="CharacterBody2D" parent="." unique_id=823965022 instance=ExtResource("10_16hvj")]
+position = Vector2(368, 528)
+scale = Vector2(6.6173835, 6.6173835)
 
 [connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button_manager/Quit" to="." method="_on_quit_pressed"]
