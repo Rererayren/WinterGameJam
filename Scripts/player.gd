@@ -12,7 +12,7 @@ enum STATE {
 
 const MAX_SPEED: float = 64.5
 const SPRINT: float = MAX_SPEED * 2.0
-const JUMP_HEIGHT: float = -165.0
+const JUMP_HEIGHT: float = -160.0
 const MAX_JUMP_TRIES: int = 2
 const GRAVITY: float = 9.81
 const ACCELERATION: float = 18.5
@@ -28,7 +28,7 @@ const DASH_COOLDOWN: float = 2.0
 const DASH_SPEED: float = 200.0
 const DASH_TIME: float = 0.12
 
-const SUPER_DASH_SPEED: float = 300.0
+const SUPER_DASH_SPEED: float = 250.0
 const SUPER_DASH_TIME: float = 0.4
 const SUPER_DASH_COST: float = 20.0
 
@@ -60,6 +60,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	process_state(delta)
 	_update_timers(delta)
+	#print(jump_count)
 	move_and_slide()
 
 func switch_state(current_state: STATE) -> void:
@@ -112,9 +113,11 @@ func process_state(delta: float) -> void:
 			if is_on_floor():
 				switch_state(STATE.FLOOR)
 			elif Input.is_action_just_pressed("jump"):
-				if jump_count < MAX_JUMP_TRIES and double_jump_unlocked:
+				if jump_count == 0:
+					switch_state(STATE.JUMP)
+				elif jump_count < MAX_JUMP_TRIES and double_jump_unlocked:
 					switch_state(STATE.DOUBLE_JUMP)
-				else:
+				elif float_unlocked:
 					switch_state(STATE.FLOAT)
 			elif try_super_dash():
 				pass
@@ -242,7 +245,11 @@ func _regen_stamina(delta: float) -> void:
 
 func set_double_jump():
 	double_jump_unlocked = true
+
+func set_super_dash():
 	super_dash_unlocked = true
+
+func set_float():
 	float_unlocked = true
 
 func set_is_dead():
