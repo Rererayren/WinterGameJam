@@ -220,6 +220,17 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player" unique_id=1137471416]
+unique_name_in_owner = true
+
+[node name="FloatCooldown" type="Timer" parent="Player" unique_id=2648087]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="Platform2" parent="." unique_id=1914813421 instance=ExtResource("3_wrm1d")]
+visible = false
+position = Vector2(336, 22)
 [node name="Coins" type="Node" parent="." unique_id=303560710]
 
 [node name="Area2D Coin" parent="Coins" unique_id=1538656560 instance=ExtResource("4_3dryh")]
