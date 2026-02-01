@@ -2,12 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://c6pt3jfmxxwdb" path="res://Assets/sprites/Blue Background.png" id="1_lf6h2"]
 [ext_resource type="Texture2D" uid="uid://qe5gm7xgbqto" path="res://Assets/sprites/tree.png" id="2_lf6h2"]
-[ext_resource type="Texture2D" uid="uid://b5lloal8d23s" path="res://Assets/sprites/Cloud.png" id="3_lf6h2"]
-[ext_resource type="Texture2D" uid="uid://h1e266764rxl" path="res://Assets/sprites/Cloud 2.png" id="4_laxsj"]
+[ext_resource type="Texture2D" uid="uid://dhpwx01af2wlt" path="res://Assets/sprites/CloudFlat.png" id="3_etw40"]
+[ext_resource type="Texture2D" uid="uid://d0v2ygg1m51hi" path="res://Assets/sprites/CloudFlat3.png" id="4_27ak2"]
+[ext_resource type="Texture2D" uid="uid://n8chrah15b0t" path="res://Assets/sprites/CloudFlat2.png" id="5_7kl6s"]
 
 [node name="Background" type="Node2D" unique_id=1899105601]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=933418419]
+scroll_offset = Vector2(16, -64)
 repeat_size = Vector2(500, 0)
 repeat_times = 5
 
@@ -34,7 +36,7 @@ repeat_times = 6
 [node name="Cloud1" type="Sprite2D" parent="Parallax2D3" unique_id=2058054707]
 position = Vector2(-64, -8)
 scale = Vector2(0.52593327, 0.53021026)
-texture = ExtResource("3_lf6h2")
+texture = ExtResource("3_etw40")
 
 [node name="Parallax2D4" type="Parallax2D" parent="." unique_id=180337883]
 repeat_size = Vector2(200, 0)
@@ -44,4 +46,14 @@ repeat_times = 6
 [node name="Cloud2" type="Sprite2D" parent="Parallax2D4" unique_id=827230683]
 position = Vector2(-127.999985, -24)
 scale = Vector2(0.4062786, 0.40958256)
-texture = ExtResource("4_laxsj")
+texture = ExtResource("4_27ak2")
+
+[node name="Parallax2D5" type="Parallax2D" parent="." unique_id=1642200230]
+repeat_size = Vector2(300, 0)
+autoscroll = Vector2(-7, 0)
+repeat_times = 6
+
+[node name="Cloud3" type="Sprite2D" parent="Parallax2D5" unique_id=1208633426]
+position = Vector2(-127.999985, -24)
+scale = Vector2(0.4062786, 0.40958256)
+texture = ExtResource("5_7kl6s")
