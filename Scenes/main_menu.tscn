@@ -5,10 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://byls7nbvbwesf" path="res://Assets/sprites/StartHover.png" id="3_n45e2"]
 [ext_resource type="Texture2D" uid="uid://ch7d2y505c1gi" path="res://Assets/sprites/EndHover.png" id="5_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://di3rwrdumv2u4" path="res://Assets/sprites/End_2.png" id="5_n45e2"]
-[ext_resource type="Texture2D" uid="uid://hq0ntpicuoau" path="res://Assets/sprites/Background.png" id="6_opfnp"]
-[ext_resource type="Texture2D" uid="uid://df7byxg1u1ji7" path="res://Assets/sprites/Menu Button Background.png" id="6_trj04"]
 [ext_resource type="Texture2D" uid="uid://d2mfaw6ebox8k" path="res://Assets/sprites/Title.png" id="7_cp0ys"]
-[ext_resource type="Texture2D" uid="uid://d14c8uncys7r3" path="res://Assets/sprites/Title Background.png" id="9_16hvj"]
+[ext_resource type="Texture2D" uid="uid://160xrc6mdi4h" path="res://Assets/sprites/TextBoxBackground.png" id="7_trj04"]
 
 [node name="MainMenu" type="Node2D" unique_id=276062027]
 script = ExtResource("1_28flt")
@@ -16,10 +14,11 @@ script = ExtResource("1_28flt")
 [node name="Button_manager" type="Control" parent="." unique_id=1179907041]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 120.0
-offset_top = 88.0
-offset_right = 160.0
-offset_bottom = 128.0
+offset_left = 429.9166
+offset_top = 239.88683
+offset_right = 469.9166
+offset_bottom = 279.88684
+scale = Vector2(1.1415011, 1.1415011)
 
 [node name="Start" type="TextureButton" parent="Button_manager" unique_id=776415694]
 layout_mode = 1
@@ -49,23 +48,22 @@ texture_hover = ExtResource("5_n45e2")
 [node name="MenuButtonBackground" type="Sprite2D" parent="Button_manager" unique_id=1521799493]
 z_index = -1
 position = Vector2(744, 232)
-texture = ExtResource("6_trj04")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1151974901]
 z_index = -2
-position = Vector2(575, 323)
-scale = Vector2(2.308, 1.396)
-texture = ExtResource("6_opfnp")
+position = Vector2(1024, 536)
+scale = Vector2(4.307506, 2.6054065)
+texture = ExtResource("7_trj04")
 
 [node name="Title" type="Sprite2D" parent="." unique_id=674021316]
 z_index = 1
-position = Vector2(312, 192)
+position = Vector2(621.9166, 343.88684)
+scale = Vector2(1.1415011, 1.1415011)
 texture = ExtResource("7_cp0ys")
 
 [node name="Title Background" type="Sprite2D" parent="." unique_id=474547466]
-position = Vector2(312, 200.00003)
-scale = Vector2(1.1887954, 0.70757246)
-texture = ExtResource("9_16hvj")
+position = Vector2(621.91656, 351.88684)
+scale = Vector2(1.3570112, 0.8076946)
 
 [connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button_manager/Quit" to="." method="_on_quit_pressed"]
