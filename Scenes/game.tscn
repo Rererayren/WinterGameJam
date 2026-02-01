@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b58irlefmkovn" path="res://Scenes/area_2d_sign.tscn" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://derb7pqif16fg" path="res://Scenes/Sign.tscn" id="9_h4fw4"]
 [ext_resource type="Script" uid="uid://d3wq5yapkmt68" path="res://Scripts/sign2.gd" id="9_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="17_ewbju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_qxrlw")
@@ -327,3 +328,6 @@ autoplay = &"RESET"
 [node name="Background" parent="." unique_id=1899105601 instance=ExtResource("6_i6g32")]
 z_index = -1
 position = Vector2(814, -56)
+
+[node name="Textbox" parent="." unique_id=313584411 instance=ExtResource("17_ewbju")]
+visible = false
