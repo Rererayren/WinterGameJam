@@ -16,10 +16,9 @@
 [ext_resource type="Script" uid="uid://d3wq5yapkmt68" path="res://Scripts/sign2.gd" id="9_ldgsr"]
 [ext_resource type="Script" uid="uid://7xbw7m36bx4x" path="res://Scripts/sign3.gd" id="10_rku1e"]
 [ext_resource type="Script" uid="uid://bxpk4300pfn16" path="res://Scripts/sign4.gd" id="11_rfjv2"]
-
+[ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="17_ewbju"]
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ldgsr"]
 load_path = "res://.godot/imported/world_tileset.png-7d0351459d02dec97d7c98fe9a06c85b.ctex"
-[ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="17_ewbju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = SubResource("CompressedTexture2D_ldgsr")
