@@ -135,3 +135,55 @@ rotation = 0.001569896
 scale = Vector2(0.76749635, 0.7737377)
 texture = ExtResource("4_27ak2")
 flip_h = true
+
+[node name="Parallax2D11" type="Parallax2D" parent="." unique_id=1669285283]
+scale = Vector2(2.027806, 2.027806)
+scroll_offset = Vector2(-616, 176)
+repeat_size = Vector2(300, 0)
+autoscroll = Vector2(-2, 0)
+repeat_times = 6
+
+[node name="Cloud1" type="Sprite2D" parent="Parallax2D11" unique_id=1716385607]
+position = Vector2(34.77309, 3.3907282)
+scale = Vector2(0.8381909, 0.8450072)
+texture = ExtResource("3_etw40")
+
+[node name="Parallax2D12" type="Parallax2D" parent="." unique_id=119263381]
+scale = Vector2(2.027806, 2.027806)
+scroll_offset = Vector2(-352.38522, 176)
+repeat_size = Vector2(170, 0)
+autoscroll = Vector2(-2, 0)
+repeat_times = 6
+
+[node name="Cloud2" type="Sprite2D" parent="Parallax2D12" unique_id=1770874988]
+position = Vector2(-157.80602, -31.561205)
+rotation = 0.001569896
+scale = Vector2(0.7263913, 0.73229843)
+texture = ExtResource("4_27ak2")
+
+[node name="Parallax2D13" type="Parallax2D" parent="." unique_id=841462771]
+scale = Vector2(2.027806, 2.027806)
+scroll_offset = Vector2(-311.8291, 176)
+repeat_size = Vector2(150, 0)
+autoscroll = Vector2(-2, 0)
+repeat_times = 6
+
+[node name="Cloud3" type="Sprite2D" parent="Parallax2D13" unique_id=648881795]
+position = Vector2(-47.34181, -7.8903036)
+scale = Vector2(0.53378373, 0.53812456)
+texture = ExtResource("5_7kl6s")
+flip_h = true
+
+[node name="Parallax2D14" type="Parallax2D" parent="." unique_id=576401462]
+scale = Vector2(2.027806, 2.027806)
+scroll_offset = Vector2(-352.38522, 176)
+repeat_size = Vector2(170, 0)
+autoscroll = Vector2(-2, 0)
+repeat_times = 6
+
+[node name="Cloud2" type="Sprite2D" parent="Parallax2D14" unique_id=202779600]
+position = Vector2(-71.01271, 27.61605)
+rotation = 0.001569896
+scale = Vector2(0.76749635, 0.7737377)
+texture = ExtResource("4_27ak2")
+flip_h = true
