@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duh1dbo02774o" path="res://Scenes/area_2d_killzone.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://b12ku5obo67lq" path="res://Scenes/Background.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://b58irlefmkovn" path="res://Scenes/area_2d_sign.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://b6c5nx0ylt5yi" path="res://Scenes/Dialogue.tscn" id="7_1l0tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_qxrlw")
