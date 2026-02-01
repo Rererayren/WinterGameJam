@@ -447,7 +447,7 @@ tile_set = SubResource("TileSet_wowpa")
 use_kinematic_bodies = true
 
 [node name="Player" parent="." unique_id=823965022 instance=ExtResource("1_ebmjs")]
-position = Vector2(1524, -22)
+position = Vector2(22, -21)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=151851536]
 zoom = Vector2(3, 3)
@@ -598,6 +598,6 @@ shape = SubResource("RectangleShape2D_exi56")
 [node name="TextboxContainer2" parent="Spirits/Bliss/Area2D" unique_id=83801780 instance=ExtResource("9_h4fw4")]
 visible = true
 offset_left = 1657.0
-offset_top = 29.0
+offset_top = 28.0
 offset_right = 1907.0
-offset_bottom = 61.0
+offset_bottom = 60.0
