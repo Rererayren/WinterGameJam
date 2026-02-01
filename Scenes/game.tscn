@@ -482,12 +482,13 @@ position = Vector2(474, -309)
 [node name="Ability Textboxes" type="Node" parent="." unique_id=208963742]
 
 [node name="TextboxContainer" parent="Ability Textboxes" unique_id=1788153566 instance=ExtResource("9_h4fw4")]
-offset_left = 172.0
+offset_left = 173.0
 offset_top = 67.0
-offset_right = -1653.0
-offset_bottom = 122.0
+offset_right = -1613.0
+offset_bottom = 113.0
 
-[node name="DisplayTextboxTimer" type="Timer" parent="Ability Textboxes/TextboxContainer" unique_id=2006470727]
+[node name="DoubleJumpTextboxTimer" type="Timer" parent="Ability Textboxes/TextboxContainer" unique_id=1258649798]
+wait_time = 0.1
 one_shot = true
 
 [node name="TextboxContainer2" parent="Ability Textboxes" unique_id=1363042312 instance=ExtResource("9_h4fw4")]
@@ -496,11 +497,15 @@ offset_top = -150.0
 offset_right = -712.0
 offset_bottom = -110.0
 
+[node name="SuperDashTextboxTimer" type="Timer" parent="Ability Textboxes/TextboxContainer2" unique_id=1359383252]
+
 [node name="TextboxContainer3" parent="Ability Textboxes" unique_id=1898608500 instance=ExtResource("9_h4fw4")]
 offset_left = 516.0
 offset_top = -285.0
 offset_right = -1308.0
 offset_bottom = -245.0
+
+[node name="FloatTextboxTimer" type="Timer" parent="Ability Textboxes/TextboxContainer3" unique_id=113588778]
 
 [node name="Signs" type="Node" parent="." unique_id=1801460739]
 
@@ -520,7 +525,7 @@ script = ExtResource("9_ldgsr")
 [node name="TextboxContainer" parent="Signs/Area2D Sign2" unique_id=1923757727 instance=ExtResource("9_h4fw4")]
 offset_left = -126.0
 offset_top = -52.0
-offset_right = 127.0
+offset_right = 137.0
 offset_bottom = -15.0
 
 [node name="Area2D Sign3" parent="Signs" unique_id=195187266 instance=ExtResource("8_v158k")]
