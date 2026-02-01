@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://d3wq5yapkmt68" path="res://Scripts/sign2.gd" id="9_ldgsr"]
 [ext_resource type="Script" uid="uid://7xbw7m36bx4x" path="res://Scripts/sign3.gd" id="10_rku1e"]
 [ext_resource type="Script" uid="uid://bxpk4300pfn16" path="res://Scripts/sign4.gd" id="11_rfjv2"]
-[ext_resource type="Script" uid="uid://b2cnapmutdswe" path="res://Scripts/collision_Sun.gd" id="21_7t8sx"]
+[ext_resource type="Script" uid="uid://dql31iefyiwgk" path="res://Scenes/area_2d.gd" id="21_exi56"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ldgsr"]
 load_path = "res://.godot/imported/world_tileset.png-7d0351459d02dec97d7c98fe9a06c85b.ctex"
@@ -447,7 +447,7 @@ tile_set = SubResource("TileSet_wowpa")
 use_kinematic_bodies = true
 
 [node name="Player" parent="." unique_id=823965022 instance=ExtResource("1_ebmjs")]
-position = Vector2(0, -47)
+position = Vector2(1524, -22)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=151851536]
 zoom = Vector2(3, 3)
@@ -586,15 +586,18 @@ position = Vector2(1185, -122)
 [node name="Bliss" type="Node2D" parent="Spirits" unique_id=227895491]
 
 [node name="Area2D" type="Area2D" parent="Spirits/Bliss" unique_id=905134552]
+collision_layer = 11
+collision_mask = 3
+input_pickable = false
+script = ExtResource("21_exi56")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spirits/Bliss/Area2D" unique_id=1508902604]
 position = Vector2(1720, 118.75)
 shape = SubResource("RectangleShape2D_exi56")
-script = ExtResource("21_7t8sx")
 
-[node name="TextEdit" type="TextEdit" parent="Spirits/Bliss" unique_id=1133617345]
-offset_left = 1720.0
-offset_top = 118.75
-offset_right = 1728.0
-offset_bottom = 126.75
-script = ExtResource("21_7t8sx")
+[node name="TextboxContainer2" parent="Spirits/Bliss/Area2D" unique_id=83801780 instance=ExtResource("9_h4fw4")]
+visible = true
+offset_left = 1657.0
+offset_top = 29.0
+offset_right = 1907.0
+offset_bottom = 61.0
