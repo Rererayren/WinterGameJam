@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dgsxu41dwk7p6"]
 
 [ext_resource type="Script" uid="uid://cp2hoo46ayssu" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://bb2ffkg03h88r" path="res://Scripts/start.gd" id="2_n45e2"]
 [ext_resource type="Texture2D" uid="uid://160xrc6mdi4h" path="res://Assets/sprites/TextBoxBackground.png" id="7_trj04"]
 [ext_resource type="FontFile" uid="uid://cs170gw4sjok2" path="res://Assets/fonts/ka1.ttf" id="9_16hvj"]
 [ext_resource type="PackedScene" uid="uid://mjmy1fbw3ugd" path="res://Scenes/player.tscn" id="10_16hvj"]
@@ -27,6 +28,7 @@ offset_left = 608.4774
 offset_top = 135.52916
 offset_right = 696.4774
 offset_bottom = 247.52914
+script = ExtResource("2_n45e2")
 
 [node name="Quit" type="Button" parent="Button_manager" unique_id=725464154]
 layout_mode = 1
@@ -94,4 +96,5 @@ position = Vector2(368, 528)
 scale = Vector2(6.6173835, 6.6173835)
 
 [connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]
+[connection signal="button_down" from="Button_manager/Quit" to="Button_manager/Start" method="_on_quit_button_down"]
 [connection signal="pressed" from="Button_manager/Quit" to="." method="_on_quit_pressed"]
