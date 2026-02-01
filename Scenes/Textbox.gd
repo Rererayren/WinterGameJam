@@ -16,12 +16,12 @@ var current_state = State.READY
 var text_queue = []
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void: 
+func _on_body_entered(body: Node2D) -> void:
+	textbox_container.visible = true
 	hide_textbox()
-	queue_text("This text is goisdvng to be added")
-	queue_text("This text is goivsdvsdvdng to be added")
-	queue_text("This text is govdsfsdving to be added")
-	queue_text("This text is goidvsng to be added")
+	queue_text("The sun is warm upon my face again.")
+	queue_text("The forest is no longer cowering from the sun I used to provide.")
+	queue_text("Thank you Leaf, balance has been restored among my friends.")
 	
 func _process(delta):
 	match current_state:

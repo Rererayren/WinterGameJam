@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://57r4pl8uybn"]
+[gd_scene format=3 uid="uid://bkb1hund81qnc"]
 
 [ext_resource type="Script" uid="uid://d0yhonegebxwc" path="res://Scripts/mask_skill_unlocked.gd" id="1_1kkd4"]
 [ext_resource type="Texture2D" uid="uid://bi66l7fqg15lj" path="res://Assets/sprites/masks.png" id="2_1kkd4"]
@@ -54,6 +54,7 @@ scale = Vector2(0.64002347, 0.64002347)
 sprite_frames = SubResource("SpriteFrames_vyq27")
 animation = &"Bliss"
 autoplay = "Bliss"
+frame_progress = 0.40762255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1174196596]
 shape = SubResource("CircleShape2D_fh183")
