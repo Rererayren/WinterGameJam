@@ -51,7 +51,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_7l4ce")
 theme_override_font_sizes/font_size = 16
-text = " "
+text = " Thank you, Leaf for finding our masks! You made it to the end of your journey. The forest balance has been restored"
 vertical_alignment = 3
 autowrap_mode = 1
 

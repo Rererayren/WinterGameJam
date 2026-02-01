@@ -14,11 +14,11 @@ script = ExtResource("1_28flt")
 [node name="Button_manager" type="Control" parent="." unique_id=1179907041]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 113.422455
-offset_top = 53.29332
-offset_right = 153.42245
-offset_bottom = 93.293335
-scale = Vector2(1.1415011, 1.1415011)
+offset_left = 204.26132
+offset_top = 66.88365
+offset_right = 244.26132
+offset_bottom = 106.88367
+scale = Vector2(1.7576411, 1.7576411)
 
 [node name="Start" type="Button" parent="Button_manager" unique_id=1979532517]
 layout_mode = 1
@@ -42,15 +42,16 @@ offset_bottom = 380.75366
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1151974901]
 z_index = -2
-position = Vector2(432.00006, 536.00006)
-scale = Vector2(4.6155405, 2.7917218)
+position = Vector2(522.8389, 549.5904)
+scale = Vector2(7.1068387, 4.29859)
 texture = ExtResource("7_trj04")
 
 [node name="Title" type="Label" parent="." unique_id=1006118738]
-offset_left = 72.0
-offset_top = 144.0
-offset_right = 690.0
-offset_bottom = 233.0
+offset_left = 162.83887
+offset_top = 157.59033
+offset_right = 780.83887
+offset_bottom = 246.59033
+scale = Vector2(1.539763, 1.539763)
 theme_override_fonts/font = ExtResource("9_16hvj")
 theme_override_font_sizes/font_size = 79
 text = "eLSEwHERE"
@@ -65,35 +66,36 @@ theme_override_font_sizes/font_size = 79
 text = "----------------"
 
 [node name="Label3" type="Label" parent="." unique_id=1471311973]
-offset_left = 824.0
-offset_top = 232.0
-offset_right = 1442.0
-offset_bottom = 321.0
+offset_left = 1305.0
+offset_top = 340.0
+offset_right = 1923.0
+offset_bottom = 429.0
+scale = Vector2(1.539763, 1.539763)
 theme_override_fonts/font = ExtResource("9_16hvj")
 theme_override_font_sizes/font_size = 64
 text = "sTART"
 
 [node name="Label2" type="Label" parent="." unique_id=937725451]
-offset_left = 872.0
-offset_top = 456.0
-offset_right = 1490.0
-offset_bottom = 545.0
-scale = Vector2(0.93246245, 0.9069584)
+offset_left = 1377.0
+offset_top = 679.0
+offset_right = 1995.0
+offset_bottom = 768.0
+scale = Vector2(1.4357711, 1.396501)
 theme_override_fonts/font = ExtResource("9_16hvj")
 theme_override_font_sizes/font_size = 64
 text = "qUIT"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1231612645]
-position = Vector2(560.00006, 552.00006)
-scale = Vector2(4.6155405, 2.7917218)
+position = Vector2(823.00006, 841.5904)
+scale = Vector2(7.1068387, 4.29859)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1506449259]
 position = Vector2(-50.264965, 0)
 shape = SubResource("WorldBoundaryShape2D_1ehe0")
 
 [node name="CharacterBody2D" parent="." unique_id=823965022 instance=ExtResource("10_16hvj")]
-position = Vector2(368, 528)
-scale = Vector2(6.6173835, 6.6173835)
+position = Vector2(631, 817.59033)
+scale = Vector2(10.189201, 10.189201)
 
 [connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]
 [connection signal="button_down" from="Button_manager/Quit" to="Button_manager/Start" method="_on_quit_button_down"]

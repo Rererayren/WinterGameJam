@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b6c5nx0ylt5yi"]
 
 [ext_resource type="FontFile" uid="uid://bkeb8t5pisgy8" path="res://Assets/fonts/TinyUnicode.ttf" id="1_34wqy"]
-[ext_resource type="Script" uid="uid://b2e0osouy8iqk" path="res://Scenes/Textbox.gd" id="2_2842h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndjoj"]
 bg_color = Color(0, 0, 0, 0.3647059)
@@ -13,13 +12,14 @@ border_color = Color(0.11482305, 0.043300778, 0.007697542, 1)
 border_blend = true
 
 [node name="Textbox" type="CanvasLayer" unique_id=313584411]
-script = ExtResource("2_2842h")
 
 [node name="TextboxContainer" type="MarginContainer" parent="." unique_id=1939586483]
 anchors_preset = 10
 anchor_right = 1.0
-offset_right = -1730.0
-offset_bottom = 37.0
+offset_left = -27.0
+offset_top = -169.0
+offset_right = -1757.0
+offset_bottom = -132.0
 grow_horizontal = 2
 scale = Vector2(1.076304, 1.076304)
 size_flags_horizontal = 8
@@ -53,7 +53,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_34wqy")
 theme_override_font_sizes/font_size = 16
-text = " Placeholder Text!!! <3 AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\\"
 vertical_alignment = 3
 autowrap_mode = 3
 text_overrun_behavior = 5
