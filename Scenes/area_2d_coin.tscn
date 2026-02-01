@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkb1hund81qnc"]
 
-[ext_resource type="Script" uid="uid://d0yhonegebxwc" path="res://Scripts/area_2d_coin.gd" id="1_1kkd4"]
+[ext_resource type="Script" uid="uid://d0yhonegebxwc" path="res://Scripts/mask_skill_unlocked.gd" id="1_1kkd4"]
 [ext_resource type="Texture2D" uid="uid://667s3e45dixf" path="res://Assets/sprites/coin.png" id="1_m1bhv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kkd4"]

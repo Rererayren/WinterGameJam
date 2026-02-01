@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b58irlefmkovn"]
 
-[ext_resource type="Script" uid="uid://bhw0mpf16ewcw" path="res://Scripts/sign.gd" id="1_bi1mo"]
+[ext_resource type="Script" uid="uid://bhw0mpf16ewcw" path="res://Scripts/tutorial_sign.gd" id="1_bi1mo"]
 [ext_resource type="Texture2D" uid="uid://craonie043xna" path="res://Assets/sprites/world_tileset.png" id="1_ervus"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bi1mo"]

@@ -23,6 +23,11 @@ buses/default_bus_layout="uid://d3r57rimrk2ll"
 
 Music="*uid://dlnn71epqxe5"
 
+[display]
+
+window/size/viewport_width=1980
+window/size/viewport_height=1080
+
 [dotnet]
 
 project/assembly_name="Game Development"
@@ -71,6 +76,12 @@ main_menu_up={
 main_menu_select={
 "deadzone": 0.2,
 "events": []
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":3,"pressure":0.0,"pressed":true,"script":null)
+]
 }
 
 [physics]

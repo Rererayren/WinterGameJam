@@ -8,24 +8,50 @@ extends Area2D
 @onready var label2: Label = $"../../Ability Textboxes/TextboxContainer2/MarginContainer/HBoxContainer/Label"
 #@onready var textbox_container_3: MarginContainer = $"../../Ability Textboxes/TextboxContainer3"
 #@onready var label3: Label = $"../../Ability Textboxes/TextboxContainer3/MarginContainer/HBoxContainer/Label"
+@onready var timer: Timer = $"../../Ability Textboxes/TextboxContainer/DisplayTextboxTimer"
 
-## Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#print("debug coin")
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+enum SkillMessageType {
+	DOUBLE_JUMP,
+	SUPER_DASH,
+	SLOW_FALLING,
+}
 
+var current_textbox: Control = null
+var current_label: Label = null
 
+func _ready() -> void:
+	timer.timeout.connect(_on_timer_timeout)
+	textbox_container.visible = false
+	textbox_container_2.visible = false
+	
+func show_timed_message(type: SkillMessageType, message: String, duration: float = 1.0) -> void:
+	if current_textbox:
+		current_textbox.visible = false
+	match type:
+		SkillMessageType.DOUBLE_JUMP:
+			current_textbox = textbox_container
+			current_label = label
+		SkillMessageType.SUPER_DASH:
+			current_textbox = textbox_container_2
+			current_label = label2
+	
+	current_textbox.visible = true
+	current_label.text = message
+	timer.wait_time = duration
+	timer.start()
+	
+func _on_timer_timeout() -> void:
+	if current_textbox:
+		current_textbox.visible = false
+	
 func _on_body_entered(body: Node2D) -> void:
 	print('+1 mask')
 	var masks_collected: int = game_manager.add_point()
 	if masks_collected >= 1:
 		player.set_double_jump()
-		textbox_container.visible = true
-		label.text = "You've unlocked Double Jump (Jump twice)!"
+		show_timed_message(SkillMessageType.DOUBLE_JUMP, "You've unlocked Double Jump (Jump twice)!", 1.0)
+		#textbox_container.visible = true
+		#label.text = "You've unlocked Double Jump (Jump twice)!"
 	if masks_collected >= 2:
 		player.set_super_dash()
 		textbox_container_2.visible = true
