@@ -7,6 +7,14 @@
 atlas = ExtResource("2_1kkd4")
 region = Rect2(0, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kkd4"]
+atlas = ExtResource("2_1kkd4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpmau"]
+atlas = ExtResource("2_1kkd4")
+region = Rect2(0, 64, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vyq27"]
 animations = [{
 "frames": [{
@@ -17,19 +25,25 @@ animations = [{
 "name": &"Bliss",
 "speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kkd4")
+}],
 "loop": true,
 "name": &"Meloncholy",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpmau")
+}],
 "loop": true,
 "name": &"Wistful",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fh183"]
-radius = 5.0990195
+radius = 6.0
 
 [node name="Area2D Coin" type="Area2D" unique_id=1538656560]
 collision_mask = 2
@@ -38,8 +52,9 @@ script = ExtResource("1_1kkd4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=287563037]
 scale = Vector2(0.64002347, 0.64002347)
 sprite_frames = SubResource("SpriteFrames_vyq27")
-animation = &"Meloncholy"
+animation = &"Bliss"
 autoplay = "Bliss"
+frame_progress = 0.40762255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1174196596]
 shape = SubResource("CircleShape2D_fh183")

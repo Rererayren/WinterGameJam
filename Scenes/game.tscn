@@ -481,18 +481,16 @@ offset_top = -150.0
 offset_right = -712.0
 offset_bottom = -110.0
 
+[node name="TextboxContainer3" parent="Ability Textboxes" unique_id=1898608500 instance=ExtResource("9_h4fw4")]
+offset_left = 516.0
+offset_top = -285.0
+offset_right = -1308.0
+offset_bottom = -245.0
+
 [node name="Signs" type="Node" parent="." unique_id=1801460739]
 
 [node name="Area2D Sign" parent="Signs" unique_id=1473179152 instance=ExtResource("8_v158k")]
 position = Vector2(-27, 41)
-message = "- Movement (Keyboard A/D or Joypad L)
-- Jump (Keyboard Space or Joypad A)
-- Sprint (Keyboard Shift or Joypad LS)
-- Dash (Keyboard C or Joypad X)
-Collect MASKS to unlocked more actions:
-- Double Jump (Jump twice)
-- Super Dash (Keyboard S or Joypad B)
-- Slow Falling (Double Jump then hold)"
 
 [node name="TextboxContainer" parent="Signs/Area2D Sign" unique_id=474082652 instance=ExtResource("9_h4fw4")]
 offset_left = -105.0
