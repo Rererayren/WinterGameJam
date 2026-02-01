@@ -2,7 +2,6 @@ extends Area2D
 
 @onready var game_manager: Node = %GameManager
 @onready var player: CharacterBody2D = $"../../Player"
-@onready var timer: Timer = $Timer
 @onready var textbox_container: MarginContainer = $"../../Ability Textboxes/TextboxContainer"
 @onready var label: Label = $"../../Ability Textboxes/TextboxContainer/MarginContainer/HBoxContainer/Label"
 @onready var textbox_container_2: MarginContainer = $"../../Ability Textboxes/TextboxContainer2"

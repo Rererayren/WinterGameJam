@@ -15,6 +15,14 @@ run/main_scene="uid://dgsxu41dwk7p6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Scenes/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://d3r57rimrk2ll"
+
+[autoload]
+
+Music="*uid://dlnn71epqxe5"
+
 [dotnet]
 
 project/assembly_name="Game Development"
