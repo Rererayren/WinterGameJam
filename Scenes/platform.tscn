@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr0amdxxxx1y7"]
 
-[ext_resource type="Texture2D" uid="uid://hq0g3xsyn41n" path="res://Assets/sprites/platforms.png" id="1_1rc8e"]
+[ext_resource type="Texture2D" uid="uid://cp3vhqsnsvn5a" path="res://Assets/sprites/half_grass_long.png" id="1_1rc8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5262"]
 size = Vector2(32, 8)
@@ -10,7 +10,7 @@ size = Vector2(32, 8)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1964231160]
 texture = ExtResource("1_1rc8e")
 region_enabled = true
-region_rect = Rect2(16, 0, 32, 9)
+region_rect = Rect2(-0.19699478, -0.22754097, 32.196995, 9.380962)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877413737]
 shape = SubResource("RectangleShape2D_n5262")
