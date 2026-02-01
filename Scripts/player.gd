@@ -10,9 +10,6 @@ enum STATE {
 	SUPER_DASH,
 }
 
-@onready var game_manager: Node = %GameManager
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
 const MAX_SPEED: float = 64.5
 const SPRINT: float = MAX_SPEED * 2.0
 const JUMP_HEIGHT: float = -165.0
@@ -41,23 +38,27 @@ var jump_count: int = 0
 var stamina: float = MAX_STAMINA
 
 @onready var float_cooldown: Timer = $FloatCooldown
+@onready var game_manager: Node = %GameManager
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-var dash_unlocked: bool = true
 var can_dash: bool = true
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 var just_dashed: bool = false
 
-var super_dash_unlocked: bool = true
+var super_dash_unlocked: bool = false
 var can_super_dash: bool = true
 var super_dash_timer: float = 0.2
+
+var double_jump_unlocked: bool = false
+var float_unlocked: bool = false
+var is_dead: bool = false
 
 func _ready() -> void:
 	switch_state(active_state)
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
-	_play_animation(delta, dir_x, just_dashed)
 	_update_timers(delta)
 	move_and_slide()
 
@@ -71,7 +72,7 @@ func switch_state(current_state: STATE) -> void:
 		STATE.FLOOR:
 			print("FLOOR")
 			jump_count = 0
-			if not can_super_dash:
+			if not can_super_dash and super_dash_unlocked:
 				can_super_dash = true
 		STATE.JUMP:
 			print("JUMP")
@@ -111,7 +112,7 @@ func process_state(delta: float) -> void:
 			if is_on_floor():
 				switch_state(STATE.FLOOR)
 			elif Input.is_action_just_pressed("jump"):
-				if jump_count < MAX_JUMP_TRIES:
+				if jump_count < MAX_JUMP_TRIES and double_jump_unlocked:
 					switch_state(STATE.DOUBLE_JUMP)
 				else:
 					switch_state(STATE.FLOAT)
@@ -135,7 +136,7 @@ func process_state(delta: float) -> void:
 			
 			if velocity.y >= 0:
 				switch_state(STATE.FALL)
-			elif Input.is_action_just_pressed("jump") and jump_count < MAX_JUMP_TRIES:
+			elif Input.is_action_just_pressed("jump") and jump_count < MAX_JUMP_TRIES and double_jump_unlocked:
 				switch_state(STATE.DOUBLE_JUMP)
 			elif try_super_dash():
 				pass
@@ -167,28 +168,9 @@ func process_state(delta: float) -> void:
 				super_dash_timer = 0.0
 				switch_state(STATE.FALL if not is_on_floor() else STATE.FLOOR)
 
-func _play_animation(delta: float, direction: float, just_dashed: bool) -> void:
-	if direction > 0:
-		animated_sprite_2d.flip_h = false
-	elif direction < 0:
-		animated_sprite_2d.flip_h = true
-	
-	if !is_dead:
-		if (just_dashed or is_super_dashing):
-			if animated_sprite_2d.animation != "dash":
-				animated_sprite_2d.play("dash")
-		elif is_on_floor():
-			if direction == 0:
-				animated_sprite_2d.play("idle")
-			else:
-				animated_sprite_2d.play("run")
-		else:
-			animated_sprite_2d.play("jump")
-	elif animated_sprite_2d.animation != "death":
-		animated_sprite_2d.play("death")
-
 func _movement_logic(delta: float) -> void:
 	var dir_x: float = Input.get_axis("ui_left", "ui_right")
+	_play_animation(delta, dir_x, just_dashed)
 	
 	if dir_x:
 		look_dir_x = int(dir_x)
@@ -201,9 +183,27 @@ func _movement_logic(delta: float) -> void:
 	var velocity_weight_x: float = 1.0 - exp(-weight * delta)
 	velocity.x = lerp(velocity.x, dir_x * target_speed, velocity_weight_x)
 
+func _play_animation(delta: float, direction: float, just_dashed: bool) -> void:
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0:
+		animated_sprite_2d.flip_h = true
+	
+	if !is_dead:
+		if (just_dashed):
+			if animated_sprite_2d.animation != "dash":
+				animated_sprite_2d.play("dash")
+		elif is_on_floor():
+			if direction == 0:
+				animated_sprite_2d.play("idle")
+			else:
+				animated_sprite_2d.play("run")
+		else:
+			animated_sprite_2d.play("jump")
+	elif animated_sprite_2d.animation != "death":
+		animated_sprite_2d.play("death")
+
 func try_dash() -> bool:
-	if not dash_unlocked:
-		return false
 	if not can_dash:
 		return false
 	if dash_cooldown_timer > 0.0:
@@ -239,12 +239,11 @@ func _regen_stamina(delta: float) -> void:
 	if stamina < MAX_STAMINA:
 		stamina += STAMINA_REGEN * delta
 		stamina = min(stamina, MAX_STAMINA)
-		print(stamina)
-
-
 
 func set_double_jump():
 	double_jump_unlocked = true
+	super_dash_unlocked = true
+	float_unlocked = true
 
 func set_is_dead():
 	is_dead = true
