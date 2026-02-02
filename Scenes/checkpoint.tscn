@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dc4fdkwaogxo8"]
+
+[ext_resource type="Script" uid="uid://shfiat2lh6sm" path="res://Scripts/checkpoint.gd" id="1_2cwi7"]
+[ext_resource type="Texture2D" uid="uid://daur2020r2sro" path="res://Assets/sprites/stone_shrine_thingy.png" id="1_lbcco"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cwi7"]
+atlas = ExtResource("1_lbcco")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e75gc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cwi7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1pff"]
+size = Vector2(26, 32)
+
+[node name="Checkpoint" type="Area2D" unique_id=869081393]
+collision_mask = 2
+script = ExtResource("1_2cwi7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1958880330]
+sprite_frames = SubResource("SpriteFrames_e75gc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1782993546]
+shape = SubResource("RectangleShape2D_i1pff")
+
+[node name="RespawnPoint" type="Marker2D" parent="." unique_id=1892916533]
+position = Vector2(0, -20)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

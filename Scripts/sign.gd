@@ -15,7 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 Collect MASKS to unlocked more actions:
 - Double Jump (Jump twice)
 - Super Dash (Keyboard S or Joypad B)
-- Slow Falling (Double Jump then hold)"""
+- Slow Falling (Double Jump then Jump Hold)"""
 
 
 func _on_body_exited(body: Node2D) -> void:

@@ -21,10 +21,10 @@ const FRICTION: float = 22.5
 const MAX_STAMINA: float = 100.0
 const STAMINA_REGEN: float = 5.0
 
-const FLOAT_GRAVITY: float = 200.0
+const FLOAT_GRAVITY: float = 180.0
 const FLOAT_VELOCITY: float = 100.0
 
-const DASH_COOLDOWN: float = 2.0
+const DASH_COOLDOWN: float = 0.5
 const DASH_SPEED: float = 200.0
 const DASH_TIME: float = 0.12
 
@@ -66,13 +66,11 @@ func _on_animation_finished() -> void:
 func _physics_process(delta: float) -> void:
 	process_state(delta)
 	_update_timers(delta)
-	#print(jump_count)
 	move_and_slide()
 
 func switch_state(current_state: STATE) -> void:
 	var previous_state: STATE = active_state
 	active_state = current_state
-	print(just_dashed)
 	
 	match active_state:
 		STATE.FALL:
@@ -185,7 +183,8 @@ func _movement_logic(delta: float) -> void:
 	_play_animation(delta, dir_x, just_dashed)
 	
 	if dir_x:
-		look_dir_x = int(dir_x)
+		look_dir_x = round(dir_x/abs(dir_x))
+		print(look_dir_x)
 	
 	var target_speed: float = MAX_SPEED
 	if Input.is_action_pressed("sprint") and dir_x:
@@ -263,3 +262,6 @@ func set_float():
 
 func set_is_dead():
 	is_dead = true
+
+func unset_is_dead():
+	is_dead = false
