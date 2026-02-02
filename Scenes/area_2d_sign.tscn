@@ -19,10 +19,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aol3p"]
-size = Vector2(14, 14)
+size = Vector2(21.086567, 25.952698)
 
 [node name="Area2D Sign" type="Area2D" unique_id=1473179152]
-collision_layer = 9
 collision_mask = 2
 script = ExtResource("1_bi1mo")
 
@@ -30,8 +29,9 @@ script = ExtResource("1_bi1mo")
 sprite_frames = SubResource("SpriteFrames_vqxye")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=535807192]
-position = Vector2(0, 8)
-scale = Vector2(-1.2330124, -1.2330124)
+position = Vector2(-9.418032e-07, 3.874302e-07)
+rotation = -3.1415925
+scale = Vector2(1.2330124, 1.2330124)
 shape = SubResource("RectangleShape2D_aol3p")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

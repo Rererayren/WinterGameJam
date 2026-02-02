@@ -67,15 +67,15 @@ func _on_timer3_timeout() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	print('+1 mask')
 	var masks_collected: int = game_manager.add_point()
-	if masks_collected >= 1:
+	if masks_collected == 1:
 		player.set_double_jump()
-		show_timed_message(SkillMessageType.DOUBLE_JUMP, "You've unlocked Double Jump (Jump twice)!", 1.0)
-	if masks_collected >= 2:
+		show_timed_message(SkillMessageType.DOUBLE_JUMP, "You've unlocked Double Jump (Jump twice)!", 10.0)
+	if masks_collected == 2:
 		player.set_super_dash()
-		show_timed_message(SkillMessageType.SUPER_DASH, "You've unlocked Super Dash (Keyboard S or Joypad B)!", 1.0)
-	if masks_collected >= 3:
+		show_timed_message(SkillMessageType.SUPER_DASH, "You've unlocked Super Dash (Keyboard S or Joypad B)!", 10.0)
+	if masks_collected == 3:
 		player.set_float()
-		show_timed_message(SkillMessageType.FLOAT, "You've unlocked Slow Falling (Double Jump then hold)!", 1.0)
+		show_timed_message(SkillMessageType.FLOAT, "You've unlocked Slow Falling (Double Jump + Jump Hold)!", 10.0)
 	$CollisionShape2D.set_deferred("disabled", true)
 	if has_node("AnimatedSprite2D"):
 		$AnimatedSprite2D.visible = false

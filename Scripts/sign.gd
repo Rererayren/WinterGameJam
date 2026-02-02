@@ -7,7 +7,15 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	textbox_container.visible = true
 	label.text = \
-	"""We are down to the cliff waiting for you."""
+	"""- Movement (Keyboard A/D or Joypad L)
+- Jump (Keyboard Space or Joypad A)
+- Sprint (Keyboard Shift or Joypad LS)
+- Dash (Keyboard C or Joypad X)
+
+Collect MASKS to unlocked more actions:
+- Double Jump (Jump twice)
+- Super Dash (Keyboard S or Joypad B)
+- Slow Falling (Double Jump then Jump Hold)"""
 
 
 func _on_body_exited(body: Node2D) -> void:

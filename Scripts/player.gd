@@ -21,10 +21,10 @@ const FRICTION: float = 22.5
 const MAX_STAMINA: float = 100.0
 const STAMINA_REGEN: float = 5.0
 
-const FLOAT_GRAVITY: float = 200.0
+const FLOAT_GRAVITY: float = 180.0
 const FLOAT_VELOCITY: float = 100.0
 
-const DASH_COOLDOWN: float = 2.0
+const DASH_COOLDOWN: float = 0.5
 const DASH_SPEED: float = 200.0
 const DASH_TIME: float = 0.12
 
@@ -56,11 +56,16 @@ var is_dead: bool = false
 
 func _ready() -> void:
 	switch_state(active_state)
+	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished() -> void:
+	if animated_sprite_2d.animation == "dash":
+		print("The Dash animation has finished!")
+		just_dashed = false
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
 	_update_timers(delta)
-	#print(jump_count)
 	move_and_slide()
 
 func switch_state(current_state: STATE) -> void:
@@ -91,6 +96,7 @@ func switch_state(current_state: STATE) -> void:
 			velocity.y = 0
 		STATE.DASH:
 			print("DASH")
+			just_dashed = true
 			can_dash = false
 			dash_timer = DASH_TIME
 			dash_cooldown_timer = DASH_COOLDOWN
@@ -99,6 +105,7 @@ func switch_state(current_state: STATE) -> void:
 		STATE.SUPER_DASH:
 			print("SUPER DASH")
 			stamina -= SUPER_DASH_COST
+			just_dashed = true
 			can_super_dash = false
 			super_dash_timer = SUPER_DASH_TIME
 			velocity.x = SUPER_DASH_SPEED * look_dir_x
@@ -176,7 +183,8 @@ func _movement_logic(delta: float) -> void:
 	_play_animation(delta, dir_x, just_dashed)
 	
 	if dir_x:
-		look_dir_x = int(dir_x)
+		look_dir_x = round(dir_x/abs(dir_x))
+		print(look_dir_x)
 	
 	var target_speed: float = MAX_SPEED
 	if Input.is_action_pressed("sprint") and dir_x:
@@ -254,3 +262,6 @@ func set_float():
 
 func set_is_dead():
 	is_dead = true
+
+func unset_is_dead():
+	is_dead = false

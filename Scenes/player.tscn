@@ -148,13 +148,13 @@ region = Rect2(320, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_x3wgy")
 }, {
-"duration": 1.0,
+"duration": 0.1,
 "texture": SubResource("AtlasTexture_3smsa")
 }, {
-"duration": 1.0,
+"duration": 0.1,
 "texture": SubResource("AtlasTexture_8erm5")
 }, {
 "duration": 1.0,
@@ -169,12 +169,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pu2lt")
 }, {
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_ukyrk")
 }],
 "loop": false,
 "name": &"dash",
-"speed": 17.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -192,9 +192,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_83xs0")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 7.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -278,12 +278,12 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 10.0
+"speed": 9.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
-radius = 8.69933
-height = 21.5469
+radius = 10.569706
+height = 27.807907
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=823965022]
 z_index = 1
@@ -293,13 +293,11 @@ script = ExtResource("1_cvnsp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1945377625]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"run"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.06724577
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=926661058]
-visible = false
-position = Vector2(0, -8)
+position = Vector2(0, -11)
 scale = Vector2(0.9461001, 1.0788299)
 shape = SubResource("CapsuleShape2D_cvnsp")
 
