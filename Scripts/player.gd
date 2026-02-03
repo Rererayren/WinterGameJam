@@ -38,7 +38,6 @@ var jump_count: int = 0
 var stamina: float = MAX_STAMINA
 
 @onready var float_cooldown: Timer = $FloatCooldown
-@onready var game_manager: Node = %GameManager
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var can_dash: bool = true
@@ -184,7 +183,6 @@ func _movement_logic(delta: float) -> void:
 	
 	if dir_x:
 		look_dir_x = round(dir_x/abs(dir_x))
-		print(look_dir_x)
 	
 	var target_speed: float = MAX_SPEED
 	if Input.is_action_pressed("sprint") and dir_x:
