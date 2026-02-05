@@ -34,5 +34,7 @@ rotation = -3.1415925
 scale = Vector2(1.2330124, 1.2330124)
 shape = SubResource("RectangleShape2D_aol3p")
 
+[node name="RespawnPoint" type="Marker2D" parent="." unique_id=1490464992]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

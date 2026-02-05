@@ -13,7 +13,7 @@ enum STATE {
 const MAX_SPEED: float = 64.5
 const SPRINT: float = MAX_SPEED * 2.0
 const JUMP_HEIGHT: float = -160.0
-const MAX_JUMP_TRIES: int = 2
+const MAX_JUMP_TRIES: int = 200
 const GRAVITY: float = 9.81
 const ACCELERATION: float = 18.5
 const FRICTION: float = 22.5
@@ -66,6 +66,9 @@ func _physics_process(delta: float) -> void:
 	process_state(delta)
 	_update_timers(delta)
 	move_and_slide()
+	
+	# Clamp player X position
+	global_position.x = min(global_position.x, 1890)
 
 func switch_state(current_state: STATE) -> void:
 	var previous_state: STATE = active_state
@@ -147,6 +150,8 @@ func process_state(delta: float) -> void:
 				switch_state(STATE.FALL)
 			elif Input.is_action_just_pressed("jump") and jump_count < MAX_JUMP_TRIES and double_jump_unlocked:
 				switch_state(STATE.DOUBLE_JUMP)
+			elif Input.is_action_just_pressed("jump") and float_unlocked:
+				switch_state(STATE.FLOAT)
 			elif try_super_dash():
 				pass
 			elif try_dash():
